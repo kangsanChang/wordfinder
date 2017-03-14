@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
 
 #define TABLE_SIZE 600011 //해싱 테이블의 크기 = 소수
 
@@ -14,6 +15,18 @@ typedef struct ListNode{
 }ListNode;
 
 ListNode *hash_table[TABLE_SIZE]; // 전역변수 hash table!
+
+char *strlwr(char *str)
+{
+  unsigned char *p = (unsigned char *)str;
+
+  while (*p) {
+     *p = tolower((unsigned char)*p);
+      p++;
+  }
+
+  return str;
+}
 
 int hash_function(char *key)
 {
@@ -184,9 +197,7 @@ void loopcase(char op){
 
 }
 
-
-int main(void){
-
+void main(){
 	char op;
 	printf("input filename (.txt 포함해서): " );
 	scanf("%s",filename);
